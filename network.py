@@ -29,34 +29,8 @@ network[1] has len 3 (connections from HL1 to HL2). Every item has a list of 3 w
 network[2] has len 3 (connections from HL2 to OL). Every item has a list of 2 weights
 
 """
-def m_initialize_network(n_inputs: int, n_hidden: list[int], n_outputs: int):
-    n_connections = list()
-    n_connections.extend(n_hidden)
 
-    n_neurons = list()
-    n_neurons.extend(n_connections)
-    n_neurons.append(n_outputs)
-
-    network = list()
-
-    for n in n_connections:
-        network.append([{'bias':random(), 'weights':[random() for i in range(n)]} for i in range(len(n_connections))])
-
-    return network
-
-
-
-# Initialize a network
-def initialize_network(n_inputs, n_hidden, n_outputs):
-    network = list()
-    hidden_layer = [{'weights':[random() for i in range(n_inputs + 1)]} for i in range(n_hidden)]
-    network.append(hidden_layer)
-    output_layer = [{'weights':[random() for i in range(n_hidden + 1)]} for i in range(n_outputs)]
-    network.append(output_layer)
-    return network
-
-
-def elastic_network(n_inputs, n_hidden_layers, n_outputs):
+def initialize_network(n_inputs, n_hidden_layers, n_outputs):
 
     network = list()
 

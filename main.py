@@ -1,5 +1,5 @@
 from random import seed
-from network import elastic_network
+from network import initialize_network
 from network import show_network
 from training import train_network
 from training import train_until_network
@@ -20,7 +20,7 @@ def main():
     n_inputs = len(dataset[0]) - 1
     n_outputs = len(set([row[-1] for row in dataset]))
 
-    network = elastic_network(n_inputs, [2], n_outputs)
+    network = initialize_network(n_inputs, [2], n_outputs)
 
     #train_until_network(network, dataset, 0.5, n_outputs, 0.001)
     train_network(network, dataset, 0.5, 20, n_outputs)
