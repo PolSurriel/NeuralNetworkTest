@@ -9,7 +9,6 @@ def main():
     seed(1)
 
     # Dataset values: [0] --> INPUTS [1] --> EXPECTED OUTPUTS
-
     dataset = [
         [[2.7810836, 2.550537003], [0, 1]],
         [[1.465489372, 2.362125076], [0, 1]],
