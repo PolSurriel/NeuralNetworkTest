@@ -18,12 +18,20 @@ def update_weights(network, row, l_rate):
 def train_iteration(network, train_dataset, l_rate, n_outputs):
     sum_error = 0
     for row in train_dataset:
+        # forward progagation
         outputs = forward_propagate(network, row)
+
+        # format expected output
         expected = [0 for i in range(n_outputs)]
         expected[row[-1]] = 1
+
+        # calculate error and back propagate
         sum_error += sum([(expected[i] - outputs[i]) ** 2 for i in range(len(expected))])
         backward_propagate_error(network, expected)
+
+        # apply gradient descent
         update_weights(network, row, l_rate)
+
     return sum_error
 
 
@@ -36,7 +44,7 @@ def train_network(network, train_dataset, l_rate, n_epoch:int, n_outputs:int):
     return {'epoch': epoch, 'error': sum_error}
 
 
-def train_until_network(network, train_dataset, l_rate:float, n_outputs:int, error_target:float):
+def train_network_until(network, train_dataset, l_rate:float, n_outputs:int, error_target:float):
     sum_error = 1.1
     epoch = 0
     while sum_error > error_target:

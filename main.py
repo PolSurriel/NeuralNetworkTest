@@ -2,10 +2,13 @@ from random import seed
 from network import initialize_network
 from network import show_network
 from training import train_network
-from training import train_until_network
+
 
 def main():
     seed(1)
+
+    # Dataset values: [0]= input1, [1]= input2, [2] = expected
+    # if there were 3 inputs the size would be 4
     dataset = [[2.7810836, 2.550537003, 0],
         [1.465489372, 2.362125076, 0],
         [3.396561688, 4.400293529, 0],
@@ -22,7 +25,6 @@ def main():
 
     network = initialize_network(n_inputs, [2], n_outputs)
 
-    #train_until_network(network, dataset, 0.5, n_outputs, 0.001)
     train_network(network, dataset, 0.5, 100, n_outputs)
 
     print("-----------------------")
