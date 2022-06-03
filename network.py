@@ -35,11 +35,11 @@ def initialize_network(n_inputs, n_hidden_layers, n_outputs):
     network = list()
 
     for n_hidden in n_hidden_layers:
-        hidden_layer = [{'weights':[random() for i in range(n_inputs + 1)]} for i in range(n_hidden)]
+        hidden_layer = [{'weights':[random() for i in range(n_inputs)], 'bias':random()} for i in range(n_hidden)]
         network.append(hidden_layer)
         n_inputs = n_hidden
 
-    output_layer = [{'weights':[random() for i in range(n_hidden_layers[-1] + 1)]} for i in range(n_outputs)]
+    output_layer = [{'weights':[random() for i in range(n_hidden_layers[-1])], 'bias':random()} for i in range(n_outputs)]
     network.append(output_layer)
 
     return network

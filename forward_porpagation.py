@@ -8,7 +8,7 @@ def forward_propagate(network, row):
     for layer in network:
         new_inputs = []
         for neuron in layer:
-            activation = activate(neuron['weights'], inputs)
+            activation = activate(neuron['weights'], neuron['bias'], inputs)
             neuron['output'] = transfer(activation)
             new_inputs.append(neuron['output'])
         inputs = new_inputs

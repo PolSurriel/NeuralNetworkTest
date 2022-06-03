@@ -1,13 +1,13 @@
 from math import exp
 
 # Calculate neuron activation for an input
-def activate(weights, inputs):
-	activation = weights[-1]
-	for i in range(len(weights)-1):
+def activate(weights, bias, inputs):
+	activation = bias
+	for i in range(len(weights)):
 		activation += weights[i] * inputs[i]
 	return activation
 
 
-# Transfer neuron activation
+# Transfer neuron activation simoid
 def transfer(activation):
 	return 1.0 / (1.0 + exp(-activation))

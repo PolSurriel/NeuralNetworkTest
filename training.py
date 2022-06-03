@@ -11,7 +11,8 @@ def update_weights(network, row, l_rate):
         for neuron in network[i]:
             for j in range(len(inputs)):
                 neuron['weights'][j] -= l_rate * neuron['delta'] * inputs[j]
-            neuron['weights'][-1] -= l_rate * neuron['delta']
+
+            neuron['bias'] -= l_rate * neuron['delta']
 
 
 def train_iteration(network, train_dataset, l_rate, n_outputs):
