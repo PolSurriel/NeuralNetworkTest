@@ -36,6 +36,7 @@ def initialize_network(n_inputs, n_hidden_layers, n_outputs):
 
     for n_hidden in n_hidden_layers:
         hidden_layer = [{'weights':[random() for i in range(n_inputs)], 'bias':random()} for i in range(n_hidden)]
+
         network.append(hidden_layer)
         n_inputs = n_hidden
 
@@ -48,7 +49,7 @@ def initialize_network(n_inputs, n_hidden_layers, n_outputs):
 def show_network(network):
     print(f"Network with {len(network)} layers (expluding input)")
     print("Where:")
-    print(f"{len(network[0][0]['weights']) - 1} inputs are expected from the first hidden layer")
+    print(f"{len(network[0][0]['weights'])} inputs are expected from the first hidden layer")
     for i in range(len(network)):
         if (i == len(network) - 1):
             print(f"in output layer there are {len(network[i])} neurons ")
