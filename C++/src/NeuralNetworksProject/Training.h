@@ -5,6 +5,7 @@
 #include "forward_propagation.h"
 #include "backpropagation.h"
 #include <iostream>
+#include <algorithm>
 
 namespace ann {
 
@@ -34,10 +35,34 @@ namespace ann {
 		}
 	}
 
+	int maxi(std::vector<float> vector) {
+
+		float max = -99999.f;
+		int max_i = -1;
+
+		repeat(vector.size()) {
+			if (vector[i] > max) {
+				max_i = i;
+				max = vector[i];
+			}
+		}
+
+		return max_i;
+
+	}
+
 	float train_iteration(std::vector<std::vector<neuron>>& network, const std::vector<std::vector<std::vector<float>>>& train_dataset, float l_rate) {
 		float sum_error = .0f;
 
-		for (const auto& row : train_dataset) {
+		// random access:
+		std::vector<int> unordered_dataset_indicies = std::vector<int>();
+		repeat(train_dataset.size()) unordered_dataset_indicies.push_back(i);
+		std::random_shuffle(unordered_dataset_indicies.begin(), unordered_dataset_indicies.end());
+
+
+		for(const auto & rowindex : unordered_dataset_indicies) {
+			sum_error = .0f;
+			const auto& row = train_dataset[rowindex];
 
 			// forward propagation
 			auto output = forward_propagate(network, row[0]);
@@ -48,6 +73,7 @@ namespace ann {
 			// calculate error and back propagate
 			repeat(expected.size()) sum_error += pow((expected[i] - output[i]), 2.0f);
 			backward_propagate_error(network, expected);
+
 
 			// apply gradient descent
 			update_weights(network, row[0], l_rate);

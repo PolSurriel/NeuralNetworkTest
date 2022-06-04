@@ -19,6 +19,7 @@ const int STOP_GAME_FONT_SIZE{ 100 };
 const int BUTTON_MENU_COUNT{ 4 };
 
 const int PLAYABLE_CHARACTERS_FOR_EACH_PLAYER{ 2 };
+const int FPS{ 60 };
 
 const float SQUARE_WIDTH_WORLD_SPACE{ 35.0f };
 const float SQUARE_HEIGHT_WORLD_SPACE{ 35.0f };
@@ -42,7 +43,6 @@ const float SECONDS_RESPAWN_FRUIT_IF_COLLISION{ 2.0f };
 const int POINTS_ON_KILL_ENEMY{ 15 };
 
 const bool PRINT_FPS{ false };
-const int FPS{ 60 };
 
 const float ENTITY_DEFAULT_SPEED{ 1.0f / 6.0f };
 

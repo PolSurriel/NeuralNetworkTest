@@ -2,7 +2,14 @@ from random import seed
 from network import initialize_network
 from network import show_network
 from training import train_network
-from training import  train_network_until
+from training import train_network_until
+from forward_porpagation import forward_propagate
+
+
+# Make a prediction with a network
+def predict(network, row):
+    outputs = forward_propagate(network, row[0])
+    return outputs.index(max(outputs))
 
 
 def main():
@@ -33,6 +40,12 @@ def main():
     print("-----------------------")
     show_network(network)
 
+
+    print("-----------------------")
+
+    for row in dataset:
+        output = predict(network, row);
+        print(f"expected: {row[1].index(max(row[1]))} give: {output}")
 
 if __name__ == '__main__':
     main()

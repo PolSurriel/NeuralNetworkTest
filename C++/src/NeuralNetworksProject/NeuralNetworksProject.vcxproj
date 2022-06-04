@@ -74,7 +74,9 @@
     <Import Project="..\..\dep\config.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -90,6 +92,12 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <LinkTimeCodeGeneration>UseFastLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -121,6 +129,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AudioManager.cpp" />
+    <ClCompile Include="ConsoleMenu.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="NeuralNetwork.cpp" />
@@ -132,6 +141,7 @@
   <ItemGroup>
     <ClInclude Include="AudioManager.h" />
     <ClInclude Include="backpropagation.h" />
+    <ClInclude Include="ConsoleMenu.h" />
     <ClInclude Include="Consts.h" />
     <ClInclude Include="forward_propagation.h" />
     <ClInclude Include="InputManager.h" />
@@ -146,7 +156,9 @@
     <ClInclude Include="Neuron.h" />
     <ClInclude Include="NeuronUtils.h" />
     <ClInclude Include="Renderer.h" />
+    <ClInclude Include="savenn.h" />
     <ClInclude Include="SDLUtils.h" />
+    <ClInclude Include="stochasticgd.h" />
     <ClInclude Include="StreamBuffer.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="Training.h" />
